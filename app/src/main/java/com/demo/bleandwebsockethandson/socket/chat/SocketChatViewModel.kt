@@ -53,6 +53,7 @@ class SocketChatViewModel @Inject constructor(var preferenceManager: PreferenceM
                 val clientSocket = Socket(mIpAddress, SOCKET_PORT2)
                 val out = ObjectOutputStream(clientSocket.getOutputStream())
                 val msg = Message.outgoingMessage(text)
+                msg.offine = isUserOffline
                 out.writeObject(msg)
                 out.flush()
                 _viewState.postValue(SocketChatViewState.AddMessage(msg))
@@ -116,6 +117,11 @@ class SocketChatViewModel @Inject constructor(var preferenceManager: PreferenceM
     override fun onCleared() {
         messageSocketServerThread.onDestroy()
         super.onCleared()
+    }
+
+    fun sendOfflineMessage() {
+        isUserOffline = true
+        sendMessage("")
     }
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.demo.bleandwebsockethandson.bluetooth.Message
 import com.demo.bleandwebsockethandson.bluetooth.chat.ChatAdapter
 import com.demo.bleandwebsockethandson.databinding.FragmentSocketChatBinding
 import com.demo.bleandwebsockethandson.home.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -70,6 +72,11 @@ class SocketChatFragment : Fragment() {
         }
     }
 
+    override fun onPause() {
+        viewModel.sendOfflineMessage()
+        super.onPause()
+    }
+
     private fun updateMessageRecyclerView(msg: Message) {
         if (msg.text.isBlank())
             return
@@ -78,8 +85,12 @@ class SocketChatFragment : Fragment() {
     }
 
     private fun setOfflineUI(offline: Boolean) {
-        // Show That user is offline && make send disabled
+        binding.ibSend.isEnabled = !offline
+        binding.sendText.isEnabled = !offline
+        Snackbar.make(binding.root, "Oops! Connection Lost!", Snackbar.LENGTH_INDEFINITE)
+            .setTextColor(ContextCompat.getColor(requireContext(), R.color.red)).show()
     }
+
 
     private fun setActivityTitle(name: String) {
         activity?.title = name

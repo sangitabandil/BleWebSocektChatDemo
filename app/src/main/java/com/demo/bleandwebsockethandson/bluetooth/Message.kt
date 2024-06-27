@@ -5,7 +5,7 @@ import java.io.Serializable
 class Message(
     val text: String,
     var type: MessageType,
-    val offine: Boolean = false
+    var offine: Boolean = false
 ) : Serializable {
     companion object {
         fun outgoingMessage(message: String): Message = Message(message, MessageType.OUTGOING)
