@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/connect"
+        android:title="@string/connect"
+        app:showAsAction="always">
+
+        <menu>
+           <item android:id="@+id/web_socket"
+               android:title="@string/using_websocket"/>
+
+            <item android:id="@+id/ble"
+                android:title="@string/using_bluetooth"/>
+        </menu>
+
+    </item>
+
+</menu>

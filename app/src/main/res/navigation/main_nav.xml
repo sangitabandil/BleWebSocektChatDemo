@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.demo.bleandwebsockethandson.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_bleScanFragment"
+            app:destination="@id/bleScanFragment" />
+        <action
+            android:id="@+id/action_socketDevicesFragment"
+            app:destination="@id/socketDevicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bleScanFragment"
+        android:name="com.demo.bleandwebsockethandson.bluetooth.scan.ScanBleDevicesFragment"
+        android:label="fragment_ble_scan"
+        tools:layout="@layout/fragment_scan_ble_devices">
+        <action
+            android:id="@+id/action_bleChatFragment"
+            app:destination="@id/bleChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bleChatFragment"
+        android:name="com.demo.bleandwebsockethandson.bluetooth.chat.BleChatFragment"
+        android:label="fragment_ble_chat"
+        tools:layout="@layout/fragment_ble_chat">
+        <argument
+            android:name="device"
+            app:argType="android.bluetooth.BluetoothDevice" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/socketDevicesFragment"
+        android:name="com.demo.bleandwebsockethandson.socket.scan.ScanSocketDevicesFragment"
+        android:label="fragment_socket_devices"
+        tools:layout="@layout/fragment_scan_socket_devices">
+        <action
+            android:id="@+id/action_socketChatFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/socketChatFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/socketChatFragment"
+        android:name="com.demo.bleandwebsockethandson.socket.chat.SocketChatFragment"
+        android:label="fragment_socket_chat"
+        tools:layout="@layout/fragment_socket_chat">
+        <argument
+            android:name="ipAddress"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

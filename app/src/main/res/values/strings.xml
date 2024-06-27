@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Chat Demo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="connect">Connect</string>
+    <string name="using_websocket">Using WebSocket</string>
+    <string name="using_bluetooth">Using Bluetooth</string>
+    <string name="tap_on_connect_button_in_top_right_corner_to_get_started">Tap on <b> CONNECT </b>button in top right corner to get started.</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="bt_disabled">Bluetooth Disabled</string>
+    <string name="toast_available">Toast Available</string>
+    <string name="scan_fail">Scan Failed</string>
+    <string name="advertisement_not_supported">Advertisement not supported</string>
+    <string name="chat_title">Chat</string>
+    <string name="chatting_with_device">Chatting with device %1$s</string>
+
+    <!--    // WebSocket-->
+    <string name="prompt_message">Message</string>
+    <string name="action_send">Send</string>
+    <string name="search_devices">Search Devices</string>
+
+
+</resources>
